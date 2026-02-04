@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Policy Simulation Sandbox</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Policy Simulation Sandbox</h1>
+      <p class="subtitle">
+        Explore policy inputs with a toy macro model. Results are illustrative only.
+      </p>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>Policy Inputs</h2>
+        <form id="policy-form">
+          <label>
+            Policy name
+            <input type="text" name="name" value="Growth Package" />
+          </label>
+          <label>
+            Tax change (% GDP)
+            <input type="number" step="0.001" name="tax_change" value="-0.01" />
+          </label>
+          <label>
+            Subsidy change (% GDP)
+            <input type="number" step="0.001" name="subsidy_change" value="0.005" />
+          </label>
+          <label>
+            Transfer change (% GDP)
+            <input type="number" step="0.001" name="transfer_change" value="0.003" />
+          </label>
+          <label>
+            Simulations
+            <input type="number" step="100" name="simulations" value="2000" />
+          </label>
+          <button type="submit">Run simulation</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Summary</h2>
+        <div id="summary"></div>
+        <h3>MEAL context warnings</h3>
+        <ul id="warnings"></ul>
+        <h3>Model notes</h3>
+        <ul id="notes"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>Pseudo indicators</h2>
+        <div id="indicators"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Prototype UI. Not intended for policy decisions.</p>
+    </footer>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
