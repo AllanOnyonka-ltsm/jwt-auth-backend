@@ -108,13 +108,14 @@ class PolicySimHandler(BaseHTTPRequestHandler):
         historical = []
         for item in historical_payload:
             hist_policy_payload = item.get("policy", {})
+            historical_name = item.get("name", "Historical Policy")
             historical.append(
                 HistoricalPolicy(
-                    name=item.get("name", "Historical Policy"),
+                    name=historical_name,
                     policy=PolicyInput(
                         name=hist_policy_payload.get(
                             "name",
-                            item.get("name", "Historical Policy"),
+                            historical_name,
                         ),
                         tax_change=float(hist_policy_payload.get("tax_change", 0.0)),
                         subsidy_change=float(
