@@ -105,15 +105,31 @@ class PolicySimHandler(BaseHTTPRequestHandler):
         seed = payload.get("seed")
 
         historical_payload = payload.get("historical", [])
-        historical = [
-            HistoricalPolicy(
-                name=item.get("name", "Historical Policy"),
-                policy=policy,
-                outcomes=item.get("outcomes", {}),
-                metadata=item.get("metadata", {}),
+        historical = []
+        for item in historical_payload:
+            hist_policy_payload = item.get("policy", {})
+            historical_name = item.get("name", "Historical Policy")
+            historical.append(
+                HistoricalPolicy(
+                    name=historical_name,
+                    policy=PolicyInput(
+                        name=hist_policy_payload.get(
+                            "name",
+                            historical_name,
+                        ),
+                        tax_change=float(hist_policy_payload.get("tax_change", 0.0)),
+                        subsidy_change=float(
+                            hist_policy_payload.get("subsidy_change", 0.0)
+                        ),
+                        transfer_change=float(
+                            hist_policy_payload.get("transfer_change", 0.0)
+                        ),
+                        metadata=hist_policy_payload.get("metadata", {}),
+                    ),
+                    outcomes=item.get("outcomes", {}),
+                    metadata=item.get("metadata", {}),
+                )
             )
-            for item in historical_payload
-        ]
 
         result = run_monte_carlo(policy, config, simulations=simulations, seed=seed)
         warnings = generate_context_warnings(policy, historical)

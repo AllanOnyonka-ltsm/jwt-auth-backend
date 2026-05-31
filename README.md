@@ -1,6 +1,6 @@
-# Policy Simulation Sandbox (Prototype)
+# Policy Simulation Sandbox Demo (Proof of Concept)
 
-This repository contains an early-stage prototype for simulating the directional impact of manifesto-style policy inputs (tax changes, subsidies, transfers) on macro outcomes. The system is intended as a learning sandbox, not a policy engine.
+This repository contains an early-stage demo/proof of concept for simulating the directional impact of manifesto-style policy inputs (tax changes, subsidies, transfers) on macro outcomes. The system is intended as a learning sandbox, not a policy engine.
 
 ## Goals
 - Accept policy inputs via Python objects (or JSON equivalents).
@@ -12,7 +12,7 @@ This repository contains an early-stage prototype for simulating the directional
 ## Quick Start
 ### CLI demo
 ```bash
-python examples/demo.py
+PYTHONPATH=. python examples/demo.py
 ```
 
 ### Local UI
@@ -22,4 +22,4 @@ python -m policy_sim.server
 Then open <http://127.0.0.1:8000> in your browser.
 
 ## Disclaimer
-This prototype uses simplified structural relationships and synthetic shocks. Outputs are illustrative and not suitable for policy decisions.
+This demo/proof of concept uses simplified structural relationships and synthetic shocks. Outputs are illustrative and not suitable for policy decisions.
